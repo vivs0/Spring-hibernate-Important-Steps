@@ -1,0 +1,60 @@
+Hibernate JDBC Properties
+
+###################################################################################
+hibernate.connection.driver_class		JDBC driver class
+hibernate.connection.url				JDBC URL
+hibernate.connection.username			database user
+hibernate.connection.password			database user password
+hibernate.connection.pool_size			maximum number of pooled connections
+hibernate.dialect						Name of the database dialect
+###################################################################################
+
+
+Hibernate Datasource Properties
+
+###################################################################################
+hibernate.connection.datasource			datasource JNDI name
+hibernate.jndi.url						URL of the JNDI provider (optional)
+hibernate.jndi.class					class of the JNDI InitialContextFactory (optional)
+hibernate.connection.username			database user (optional)
+hibernate.connection.password			database user password (optional)
+###################################################################################
+
+example
+/**********************************************************************************
+hibernate.connection.datasource 				= java:/comp/env/jdbc/test
+hibernate.transaction.factory_class 			= \org.hibernate.transaction.JTATransactionFactory
+hibernate.transaction.manager_lookup_class 		= \org.hibernate.transaction.JBossTransactionManagerLookup
+hibernate.dialect 								= org.hibernate.dialect.PostgreSQLDialect
+***********************************************************************************/
+
+
+Hibernate Configuration Properties
+#######################################################################################
+hibernate.dialect	The classname of a Hibernate org.hibernate.dialect.Dialect which allows Hibernate to generate SQL optimized for a particular relational database.
+e.g. full.classname.of.Dialect
+
+In most cases Hibernate will actually be able to choose the correct org.hibernate.dialect.Dialect implementation based on the JDBC metadata returned by the JDBC driver.
+
+hibernate.show_sql	Write all SQL statements to console. This is an alternative to setting the log category org.hibernate.SQL to debug.
+e.g. true | false
+
+hibernate.format_sql	Pretty print the SQL in the log and console. e.g. true | false
+hibernate.default_schema	Qualify unqualified table names with the given schema/tablespace in generated SQL. e.g. SCHEMA_NAME
+hibernate.default_catalog	Qualifies unqualified table names with the given catalog in generated SQL. e.g. CATALOG_NAME
+hibernate.session_factory_name	The org.hibernate.SessionFactory will be automatically bound to this name in JNDI after it has been created.
+e.g. jndi/composite/name
+
+hibernate.max_fetch_depth	Sets a maximum "depth" for the outer join fetch tree for single-ended associations (one-to-one, many-to-one). A 0 disables default outer join fetching.
+e.g. recommended values between 0 and 3
+
+hibernate.default_batch_fetch_size	Sets a default size for Hibernate batch fetching of associations. e.g. recommended values 4, 8, 16
+hibernate.default_entity_mode	Sets a default mode for entity representation for all sessions opened from this SessionFactory
+dynamic-map, dom4j, pojo
+
+hibernate.order_updates	Forces Hibernate to order SQL updates by the primary key value of the items being updated. This will result in fewer transaction deadlocks in highly concurrent systems. e.g. true | false
+hibernate.generate_statistics	If enabled, Hibernate will collect statistics useful for performance tuning. e.g. true | false
+hibernate.use_identifier_rollback	If enabled, generated identifier properties will be reset to default values when objects are deleted. e.g. true | false
+hibernate.use_sql_comments	If turned on, Hibernate will generate comments inside the SQL, for easier debugging, defaults to false.
+e.g. true | false
+
